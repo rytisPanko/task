@@ -24,5 +24,5 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 export default MyApp
 
 
-//bendriems puslapio apibrėžimams, pvz.,
+//bendriems puslapio apibrėžimams, 
 // apibrėžiant kontekstus, kurie gali būti pasiekiami visuose kituose komponentuose

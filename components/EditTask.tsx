@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useHomeStateContext } from '../context/Home';
 import { useTaskStateContext } from '../context/Task';
-import { IColumn, Task } from '../interfaces';
+
 
 const EditTask = () => {
     const {
@@ -10,12 +10,9 @@ const EditTask = () => {
         setDisplayEditTask,
         editTaskInputs,
         setEditTaskInputs,
-        editTaskErrors,
-        setEditTaskErrors,
         onChangeEditTaskInputs,
         displayEditTaskSelectColumn,
         setDisplayEditTaskSelectColumn,
-        checkEditTaskFormErrors,
     } = useTaskStateContext();
 
     const { boards, setBoards, boardSelectedId } = useHomeStateContext();
