@@ -1,3 +1,6 @@
+//React konteksto susijusį su lentoje esančiais duomenimis ir funk
+
+
 import React, { createContext, useContext, useState } from 'react';
 import { BoardContextType } from '../interfaces';
 

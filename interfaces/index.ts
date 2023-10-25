@@ -1,4 +1,8 @@
 
+//apibrėžti TypeScript tipo aprašams . 
+//valdyti programos duomenis bei funkcionalumą
+
+
 export type User = {
   id: string
   name: string

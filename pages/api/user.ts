@@ -22,3 +22,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     return res.status(500).json({ message: err.message })
   }
 }
+
+
+//kodas aprašo serverio pusės API,
+// kuris leidžia gauti visus vartotojus iš duomenų bazės

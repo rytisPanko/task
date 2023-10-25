@@ -72,3 +72,8 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     return res.status(500).json({ message: error.message })
   }
 }
+
+
+//leidžiantį klientui pridėti, redaguoti ar ištrinti užduotį. 
+//Klientui, siunčiant POST užklausą, bus sukurta nauja užduotis, 
+//PUT - redaguota esama, o DELETE - pašalinta pagal ID.

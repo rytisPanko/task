@@ -1,3 +1,5 @@
+//pagrindinis puslapio komponentas, kai vartotojas atveria programą ar svetainę
+
 import React, { createContext, useContext, useState } from 'react';
 import { IBoard, HomeContextType } from '../interfaces';
 
