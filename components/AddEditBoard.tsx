@@ -140,49 +140,54 @@ const AddEditBoard = () => {
   }
 
   return (
-    <div>
-      <p>{displayAddEditBoard.mode === 'ADD' ? 'Add New' : `Edit ${completeBoardSelected?.name}`} Board</p>
-      
-      <label htmlFor='name'>Board Name</label>
-      <input value={displayAddEditBoard.mode === 'ADD' ? addBoardInputs.name : editBoardInputs.name} onChange={(e) => {
-        if (displayAddEditBoard.mode === 'ADD') {
-          setAddBoardInputs({ ...addBoardInputs, name: e.target.value })
-        }
-        else {
-          setEditBoardInputs({ ...editBoardInputs, name: e.target.value })
-        }
-      }} id="board_name" name='name' />
-      
-      <p>Board Columns</p>
-      {displayAddEditBoard.mode === 'ADD' && addBoardInputs.columns.map((column) => (
-        <div key={column.id}>
-          <input value={column.name} onChange={(e) => onChangeAddBoards(column.id, e.target.value, 'changeName')} />
-          <button onClick={(e) => onChangeAddBoards(column.id, '', 'deleting')}>Delete</button>
+    <>
+      <div onClick={() => setDisplayAddEditBoard({ display: false, mode: '' })} className='w-screen h-screen absolute bg-black/50 z-20 top-0' />
+      <div className='w-[480px] min-h-[325px] flex flex-col p-8 rounded-md bg-white dark:bg-darkGrey absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-20'>
+        <p className='text-hL font-bold dark:text-white'>{displayAddEditBoard.mode === 'ADD' ? 'Add New' : `Edit ${completeBoardSelected?.name}`} Board</p>
+        <div className='w-full h-[63px] flex flex-col justify-between my-6'>
+          <label className='text-hS text-mediumGrey dark:text-white' htmlFor='name'>Board Name</label>
+          <input value={displayAddEditBoard.mode === 'ADD' ? addBoardInputs.name : editBoardInputs.name} onChange={(e) => {
+            if (displayAddEditBoard.mode === 'ADD') {
+              setAddBoardInputs({ ...addBoardInputs, name: e.target.value })
+            }
+            else {
+              setEditBoardInputs({ ...editBoardInputs, name: e.target.value })
+            }
+          }} className='w-full h-[40px] px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded' id="board_name" name='name' />
         </div>
-      ))}
-      
-      {displayAddEditBoard.mode === 'EDIT' && editBoardInputs.columns.map((column) => (
-        <div key={column.id}>
-          <input value={column.name} onChange={(e) => onChangeEditBoards(column.id, e.target.value, 'changeName')} />
-          <button onClick={(e) => deleteColumnEditMode(column.id)}>Delete</button>
+        <div className='w-full flex flex-col mb-3'>
+          <p className='text-hS text-mediumGrey dark:text-white mb-3'>Board Columns</p>
+          {
+            displayAddEditBoard.mode === 'ADD' && addBoardInputs.columns.map((column) => (
+              <div className='w-full flex justify-between items-center last:mb-0 mb-3' key={column.id}>
+                <input value={column.name} onChange={(e) => onChangeAddBoards(column.id, e.target.value, 'changeName')} className='w-[385px] h-[40px] px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded' />
+                <svg onClick={(e) => onChangeAddBoards(column.id, '', 'deleting')} className='cursor-pointer' width="15" height="15" xmlns="http://www.w3.org/2000/svg"><g fill="#828FA3" fillRule="evenodd"><path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" /><path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" /></g></svg>
+              </div>
+            ))
+          }
+          {
+            displayAddEditBoard.mode === 'EDIT' && editBoardInputs.columns.map((column) => (
+              <div className='w-full flex justify-between items-center last:mb-0 mb-3' key={column.id}>
+                <input value={column.name} onChange={(e) => onChangeEditBoards(column.id, e.target.value, 'changeName')} className='w-[385px] h-[40px] px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded' />
+                <svg onClick={(e) => deleteColumnEditMode(column.id)} className='cursor-pointer' width="15" height="15" xmlns="http://www.w3.org/2000/svg"><g fill="#828FA3" fillRule="evenodd"><path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" /><path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" /></g></svg>
+              </div>
+            ))
+          }
+          {errorColumnTasks && <p className='text-hS text-red mb-3'>You cannot delete a column containing tasks</p>}
         </div>
-      ))}
-      
-      {errorColumnTasks && <p>You cannot delete a column containing tasks</p>}
-      
-      <button onClick={() => {
-        setErrorColumnTasks(false)
-        if (displayAddEditBoard.mode === 'ADD') {
-          onChangeAddBoards('0', '', 'add')
-        }
-        else {
-          addColumnEditMode();
-        }
-      }}>+ Add New Column</button>
-      
-      <button onClick={() => addEditBoard(displayAddEditBoard.mode)}>{displayAddEditBoard.mode === 'ADD' ? 'Create New' : 'Edit'} Board</button>
-    </div>
+        <button onClick={() => {
+          setErrorColumnTasks(false)
+          if (displayAddEditBoard.mode === 'ADD') {
+            onChangeAddBoards('0', '', 'add')
+          }
+          else {
+            addColumnEditMode();
+          }
+        }} type='button' className='w-full h-[40px] bg-orange/10 dark:bg-white hover:bg-orange/30 text-orange font-bold text-bL rounded-[20px]'>+ Add New Column</button>
+        <button onClick={() => addEditBoard(displayAddEditBoard.mode)} className='h-10 w-full rounded-[20px] font-bold bg-orange hover:bg-orangeHover text-white text-bL mt-6'>{displayAddEditBoard.mode === 'ADD' ? 'Create New' : 'Edit'} Board</button>
+      </div>
+    </>
   )
-}
-
-export default AddEditBoard
+      }
+  export default AddEditBoard;
+  

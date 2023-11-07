@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import Head from 'next/head'
 import Header from './Header'
 import { closeModalUpdateBoard } from '../utils/closeModal'
@@ -17,13 +17,18 @@ type Props = {
   title?: string
 }
 
-const Layout = ({ children, title = 'TASK' }: Props) => {
-  const { updateBoardModal, setUpdateBoardModal } = useHomeStateContext();
+const Layout = ({ children, title = 'Task' }: Props) => {
+  const { updateBoardModal, setUpdateBoardModal, darkMode, setDarkMode } = useHomeStateContext();
   const { displayAddEditBoard, displayDeleteModal } = useBoardStateContext();
   const { displayAddTask, displayAddTaskSelectColumn, setDisplayAddTaskSelectColumn, viewTask, displayViewTaskChangeColumn, setDisplayViewTaskChangeColumn, displayModalEditDeleteTask, setDisplayModalEditDeleteTask, displayEditTask, displayEditTaskSelectColumn, setDisplayEditTaskSelectColumn } = useTaskStateContext();
 
+  useEffect(() => {
+    let darkModePreference = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setDarkMode(darkModePreference);
+  }, [])
+
   return (
-    <div onClick={(e) => {
+    <div className={`${darkMode ? 'dark' : ''} h-screen relative`} onClick={(e) => {
       if (updateBoardModal) {
         if (closeModalUpdateBoard('closeModalUpdateBoardOff', e)) {
           setUpdateBoardModal(false)
@@ -57,14 +62,25 @@ const Layout = ({ children, title = 'TASK' }: Props) => {
       </Head>
       <Toaster />
       <Header />
-      {displayAddEditBoard.display && (<AddEditBoard />)}
-      {displayDeleteModal.display && (<DeleteModal />)}
-      {displayAddTask && (<AddTask />)}
-      {viewTask.display && (<ViewTask />)}
-      {displayEditTask.display && (<EditTask />)}
+      {
+        displayAddEditBoard.display && (<AddEditBoard />)
+      }
+      {
+        displayDeleteModal.display && (<DeleteModal />)
+      }
+      {
+        displayAddTask && (<AddTask />)
+      }
+      {
+        viewTask.display && (<ViewTask />)
+      }
+      {
+        displayEditTask.display && (<EditTask />)
+      }
       {children}
     </div>
   )
 }
+
 
 export default Layout

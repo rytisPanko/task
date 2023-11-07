@@ -25,7 +25,7 @@ const IndexPage = ({ boards }: Props) => {
   }, [boards])
   return (
     <Layout title="TASK">
-      <div>
+      <div className='width-full h-[90.5%] flex flex-row bg-lightBg dark:bg-darkBg dark: relative'>
         <Sidebar />
         <Board />
       </div>

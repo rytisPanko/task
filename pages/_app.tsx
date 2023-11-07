@@ -5,6 +5,7 @@ import { BoardContextProvider } from '../context/Board';
 import { TaskContextProvider } from '../context/Task';
 import { SessionProvider } from 'next-auth/react';
  
+import '../styles/globals.css'
 
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
