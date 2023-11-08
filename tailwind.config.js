@@ -18,8 +18,6 @@ module.exports = {
         linesLight: '#E4EBFA',
         lightBg: '#F4F7FD',
         white: '#FFFFFF',
-        purple: '#635FC7',
-        purpleHover: '#A8A4FF',
         red: '#EA5555',
         redHover: '#FF9898',
       },
