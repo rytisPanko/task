@@ -43,7 +43,7 @@ const EditTask = () => {
       body: JSON.stringify(task)
     })
     const newTask = await res.json();
-    console.log("Editing Task successful", { newTask });
+    console.log("Redagavimas sėkmingas", { newTask });
 
     const newBoards = boards.map((board) => {
       if (board.id === boardSelectedId) {
@@ -91,15 +91,15 @@ const EditTask = () => {
       <div className='w-[480px] min-h-[585px] flex flex-col p-8 rounded-md bg-white dark:bg-darkGrey absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-20'>
         <p className='text-hL font-bold dark:text-white'>Redaguoti</p>
         <div className='w-full h-[68px] flex flex-col justify-between my-6'>
-          <label htmlFor='title' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Title{editTaskErrors.title && <span className='text-bL text-red ml-2'>Negali būti tuščia</span>}</label>
+          <label htmlFor='title' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Pavadinimas{editTaskErrors.title && <span className='text-bL text-red ml-2'>Negali būti tuščia</span>}</label>
           <input value={editTaskInputs.title} onChange={(e) => setEditTaskInputs({ ...editTaskInputs, title: e.target.value })} className='w-full h-[40px] px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded' id="task_title" name='title' />
         </div>
         <div className='w-full h-[142px] flex flex-col justify-between'>
-          <label htmlFor='description' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Description{editTaskErrors.description && <span className='text-bL text-red ml-2'>Negali būti tuščia</span>}</label>
+          <label htmlFor='description' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Aprašymas{editTaskErrors.description && <span className='text-bL text-red ml-2'>Negali būti tuščia</span>}</label>
           <textarea value={editTaskInputs.description} onChange={(e) => setEditTaskInputs({ ...editTaskInputs, description: e.target.value })} className='w-full h-[112px] px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded resize-none' id="task_description" name='description' />
         </div>
 
-        <p className='font-bold text-bL text-mediumGrey dark:text-white mt-6 mb-2'>Subtasks</p>
+        <p className='font-bold text-bL text-mediumGrey dark:text-white mt-6 mb-2'>Papildomai</p>
         <div className='w-full flex flex-col'>
           {
             editTaskInputs.subtasks.map((subtask) => (
@@ -111,9 +111,9 @@ const EditTask = () => {
             ))
           }
         </div>
-        <button onClick={() => onChangeEditTaskInputs('subtasks', 'add', '', '')} className='w-full h-[40px] bg-orange/10 dark:bg-white hover:bg-orange/30 text-orange font-bold text-bL rounded-[20px]'>+ Add New Subtask</button>
+        <button onClick={() => onChangeEditTaskInputs('subtasks', 'add', '', '')} className='w-full h-[40px] bg-orange/10 dark:bg-white hover:bg-orange/30 text-orange font-bold text-bL rounded-[20px]'>+ Pridėti nauja subtask</button>
         <div className='w-full h-[68px] flex flex-col justify-between my-6 relative'>
-          <p className='font-bold text-bL text-mediumGrey dark:text-white'>Status</p>
+          <p className='font-bold text-bL text-mediumGrey dark:text-white'>Statusas</p>
           <div onClick={() => setDisplayEditTaskSelectColumn(true)} className={`w-full h-10 flex items-center justify-between px-4 py-2 border border-mediumGrey/25 hover:border-orange ${false ? 'border-orange' : ''} rounded cursor-pointer`}>
             <p className='text-bL dark:text-white'>{editTaskInputs.status.value}</p>
             <svg className={`${displayEditTaskSelectColumn ? 'rotate-180' : ''}`} width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path stroke="#635FC7" strokeWidth="2" fill="none" d="m1 1 4 4 4-4" /></svg>

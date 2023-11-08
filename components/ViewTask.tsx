@@ -185,4 +185,4 @@ const ViewTask = () => {
   )
 }
 
-export default ViewTask
+export default ViewTask;
