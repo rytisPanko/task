@@ -14,7 +14,7 @@ export const BoardContextProvider = ({ children }: BoardContextProviderProps) =>
   const [displayAddEditBoard, setDisplayAddEditBoard] = useState({ display: false, mode: '' });
   const [addBoardInputs, setAddBoardInputs] = useState<{ name: string, columns: { id: string, name: string }[] }>({
     name: '',
-    columns: [{ name: 'Todo', id: '1' }, { name: 'Doing', id: '2' }, { name: 'Done', id: '3' }]
+    columns: [{ name: 'Padaryti', id: '1' }, { name: 'Daroma', id: '2' }, { name: 'Atlikta', id: '3' }]
   })
   const [editBoardInputs, setEditBoardInputs] = useState<{ name: string, columns: { id: string, name: string }[] }>({
     name: '',

@@ -32,20 +32,7 @@ module.exports = {
         hM: '15px',
         hL: '18px',
         hXL: '24px',
-      },
-      lineHeight: {
-        S: '15px',
-        M: '19px',
-        L: '23px',
-        XL: '30px',
-      },
-      letterSpacing: {
-        S: '2.4px',
       }
-    },
-  },
-  plugins: [
-    require('flowbite/plugin'),
-  ],
-  darkMode: 'class',
+    }
+  }
 }

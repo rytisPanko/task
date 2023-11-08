@@ -83,19 +83,19 @@ const EditTask = () => {
     });
     setBoards(newBoards);
     setDisplayEditTask({ display: false, task: null });
-    toast.success(`Task has been edited`)
+    toast.success(`Redagavimas sekmingas`)
   }
   return (
     <>
       <div onClick={() => setDisplayEditTask({ display: false, task: null })} className='w-screen h-screen absolute bg-black/50 z-20 top-0' />
       <div className='w-[480px] min-h-[585px] flex flex-col p-8 rounded-md bg-white dark:bg-darkGrey absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-20'>
-        <p className='text-hL font-bold dark:text-white'>Edit Task</p>
+        <p className='text-hL font-bold dark:text-white'>Redaguoti</p>
         <div className='w-full h-[68px] flex flex-col justify-between my-6'>
-          <label htmlFor='title' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Title{editTaskErrors.title && <span className='text-bL text-red ml-2'>Can't be empty</span>}</label>
+          <label htmlFor='title' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Title{editTaskErrors.title && <span className='text-bL text-red ml-2'>Negali būti tuščia</span>}</label>
           <input value={editTaskInputs.title} onChange={(e) => setEditTaskInputs({ ...editTaskInputs, title: e.target.value })} className='w-full h-[40px] px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded' id="task_title" name='title' />
         </div>
         <div className='w-full h-[142px] flex flex-col justify-between'>
-          <label htmlFor='description' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Description{editTaskErrors.description && <span className='text-bL text-red ml-2'>Can't be empty</span>}</label>
+          <label htmlFor='description' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Description{editTaskErrors.description && <span className='text-bL text-red ml-2'>Negali būti tuščia</span>}</label>
           <textarea value={editTaskInputs.description} onChange={(e) => setEditTaskInputs({ ...editTaskInputs, description: e.target.value })} className='w-full h-[112px] px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded resize-none' id="task_description" name='description' />
         </div>
 
@@ -105,7 +105,7 @@ const EditTask = () => {
             editTaskInputs.subtasks.map((subtask) => (
               <div key={subtask.id} className='w-full h-[40px] flex justify-between items-center mb-3 relative'>
                 <textarea value={subtask.title} onChange={(e) => onChangeEditTaskInputs('subtasks', 'changeName', subtask.id, e.target.value)} className='w-[385px] h-full px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded' />
-                {editTaskErrors.subtasks.includes(subtask.id) && <p className='text-bL text-red absolute right-[47px]'>Can't be empty</p>}
+                {editTaskErrors.subtasks.includes(subtask.id) && <p className='text-bL text-red absolute right-[47px]'>Negali būti tuščia</p>}
                 <svg onClick={() => onChangeEditTaskInputs('subtasks', 'delete', subtask.id, '')} className='fill-mediumGrey hover:fill-red cursor-pointer' width="15" height="15" xmlns="http://www.w3.org/2000/svg"><g fillRule="evenodd"><path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" /><path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" /></g></svg>
               </div>
             ))
@@ -140,7 +140,7 @@ const EditTask = () => {
           if (!errors) {
             editTask(editTaskInputs.status)
           }
-        }} className='h-10 w-full rounded-[20px] font-bold bg-orange hover:bg-orangeHover text-white text-bL'>Edit Task</button>
+        }} className='h-10 w-full rounded-[20px] font-bold bg-orange hover:bg-orangeHover text-white text-bL'>Redaguoti</button>
       </div>
     </>
   )

@@ -40,11 +40,11 @@ const Header = () => {
                 <p onClick={() => {
                   setDisplayAddEditBoard({ display: true, mode: 'EDIT' });
                   setUpdateBoardModal(false);
-                }} className='h-[24px] text-mediumGrey text-bL cursor-pointer hover:underline'>Koreguoti lentą</p>
+                }} className='h-[24px] text-mediumGrey text-bL cursor-pointer hover:underline'>Redaguoti lentą</p>
                 <p onClick={() => {
                   setDisplayDeleteModal({ display: true, mode: 'board', id: boardSelectedId });
                   setUpdateBoardModal(false);
-                }} className='h-[24px] text-bL text-red cursor-pointer hover:underline'>Trinti lentas</p>
+                }} className='h-[24px] text-bL text-red cursor-pointer hover:underline'>Trinti lentą</p>
               </div>
             )
           }

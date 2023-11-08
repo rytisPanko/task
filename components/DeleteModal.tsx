@@ -33,7 +33,7 @@ const DeleteModal = () => {
         body: JSON.stringify(body)
       })
       const deletedBoard = await res.json();
-      console.log("Deleting board successful", { deletedBoard });
+      console.log("Ištrinta sėkmingai", { deletedBoard });
 
       const newBoards: IBoard[] = [];
       boards.forEach((board) => {
@@ -46,7 +46,7 @@ const DeleteModal = () => {
         setBoardSelectedId(newBoards[0].id);
       }
       setDisplayDeleteModal({ display: false, mode: '', id: '' });
-      toast.success(`${deletedBoard.name} has been deleted !`);
+      toast.success(`${deletedBoard.name} ištrinta !`);
     }
     else {
       let body = { taskId: displayDeleteModal.id }
@@ -56,7 +56,7 @@ const DeleteModal = () => {
         body: JSON.stringify(body)
       })
       const deletedTask = await res.json();
-      console.log("Deleting task successful", { deletedTask });
+      console.log("Ištrinta task sėkmingai", { deletedTask });
 
       const newBoards = boards.map((board) => {
         if (board.id === boardSelectedId) {
@@ -79,7 +79,7 @@ const DeleteModal = () => {
       });
       setBoards(newBoards);
       setDisplayDeleteModal({ display: false, mode: '', id: '' });
-      toast.success(`${deletedTask.title} has been deleted !`);
+      toast.success(`${deletedTask.title} ištrinta !`);
     }
   }
   return (
@@ -98,7 +98,7 @@ const DeleteModal = () => {
           )
         }
         <div className='w-full flex justify-between items-center'>
-          <button onClick={() => deleteThis()} className='w-[200px] h-[40px] text-bL font-bold bg-red hover:bg-redHover text-white rounded-[20px]'>Delete</button>
+          <button onClick={() => deleteThis()} className='w-[200px] h-[40px] text-bL font-bold bg-red hover:bg-redHover text-white rounded-[20px]'>Trinti</button>
           <button onClick={() => setDisplayDeleteModal({ display: false, mode: '', id: '' })} className='w-[200px] h-[40px] text-bL font-bold bg-orange/10 dark:bg-white hover:bg-orange/25 text-orange rounded-[20px]'>Cancel</button>
         </div>
       </div>

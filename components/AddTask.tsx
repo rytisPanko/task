@@ -29,7 +29,7 @@ const AddTask = () => {
       body: JSON.stringify(task)
     })
     const newTask = await res.json();
-    console.log("Creating Task successful", { newTask });
+    console.log("Sukurta sėkmingai", { newTask });
 
     const newBoards = boards.map((board) => {
       if (board.id === boardSelectedId) {
@@ -58,35 +58,35 @@ const AddTask = () => {
       subtasks: [{ id: '1', name: '' }],
       status: { value: '', columnId: '' }
     })
-    toast.success(`${newTask[0].title} Task has been created !`);
+    toast.success(`${newTask[0].title} Task sukurta !`);
   }
   return (
     <>
       <div onClick={() => setDisplayAddTask(false)} className='w-screen h-screen absolute bg-black/50 z-20 top-0' />
       <div className='w-[480px] min-h-[585px] flex flex-col p-8 rounded-md bg-white dark:bg-darkGrey absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-20'>
-        <p className='text-hL font-bold dark:text-white'>Add New Task</p>
+        <p className='text-hL font-bold dark:text-white'>Pridėti naują Task</p>
         <div className='w-full h-[68px] flex flex-col justify-between my-6'>
-          <label htmlFor='title' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Title{addTaskErrors.title && <span className='text-bL text-red ml-2'>Can't be empty</span>}</label>
+          <label htmlFor='title' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Pavadinimas{addTaskErrors.title && <span className='text-bL text-red ml-2'>Negali buti tuščia</span>}</label>
           <input value={addTaskInputs.title} onChange={(e) => setAddTaskInputs({ ...addTaskInputs, title: e.target.value })} className='w-full h-[40px] px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded' id="task_title" name='title' />
         </div>
         <div className='w-full h-[142px] flex flex-col justify-between'>
-          <label htmlFor='description' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Description{addTaskErrors.description && <span className='text-bL text-red ml-2'>Can't be empty</span>}</label>
+          <label htmlFor='description' className='flex items-center font-bold text-bL text-mediumGrey dark:text-white'>Aprašymas{addTaskErrors.description && <span className='text-bL text-red ml-2'>Negali buti tuščia</span>}</label>
           <textarea value={addTaskInputs.description} onChange={(e) => setAddTaskInputs({ ...addTaskInputs, description: e.target.value })} className='w-full h-[112px] px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded resize-none' id="task_description" name='description' />
         </div>
   
-        <p className='font-bold text-bL text-mediumGrey dark:text-white mt-6 mb-2'>Subtasks</p>
+        <p className='font-bold text-bL text-mediumGrey dark:text-white mt-6 mb-2'>Papildomai</p>
         <div className='w-full flex flex-col'>
           {
             addTaskInputs.subtasks.map((subtask) => (
               <div key={subtask.id} className='w-full h-[40px] flex justify-between items-center mb-3 relative'>
                 <textarea value={subtask.name} onChange={(e) => onChangeAddTaskInputs('subtasks', 'changeName', subtask.id, e.target.value)} className='w-[385px] h-full px-4 py-2 text-bL dark:bg-darkGrey dark:text-white border border-mediumGrey/25 focus:border-orange focus:border-2 focus:px-[15px] outline-0 rounded' />
-                {addTaskErrors.subtasks.includes(subtask.id) && <p className='text-bL text-red absolute right-[47px]'>Can't be empty</p>}
+                {addTaskErrors.subtasks.includes(subtask.id) && <p className='text-bL text-red absolute right-[47px]'>Negali buti tuščia</p>}
                 <svg onClick={() => onChangeAddTaskInputs('subtasks', 'delete', subtask.id, '')} className='fill-mediumGrey hover:fill-red cursor-pointer' width="15" height="15" xmlns="http://www.w3.org/2000/svg"><g fillRule="evenodd"><path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" /><path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" /></g></svg>
               </div>
             ))
           }
         </div>
-        <button onClick={() => onChangeAddTaskInputs('subtasks', 'add', '', '')} className='w-full h-[40px] bg-orange/10 dark:bg-white hover:bg-orange/30 text-orange font-bold text-bL rounded-[20px]'>+ Add New Subtask</button>
+        <button onClick={() => onChangeAddTaskInputs('subtasks', 'add', '', '')} className='w-full h-[40px] bg-orange/10 dark:bg-white hover:bg-orange/30 text-orange font-bold text-bL rounded-[20px]'>+ Pridėti naują Subtask</button>
         <div className='w-full h-[68px] flex flex-col justify-between my-6 relative'>
           <p className='font-bold text-bL text-mediumGrey dark:text-white'>Status</p>
           <div onClick={() => setDisplayAddTaskSelectColumn(true)} className={`w-full h-10 flex items-center justify-between px-4 py-2 border border-mediumGrey/25 hover:border-orange ${displayAddTaskSelectColumn ? 'border-orange' : ''} rounded cursor-pointer`}>
@@ -115,7 +115,7 @@ const AddTask = () => {
           if (!errors) {
             createTask(addTaskInputs.status)
           }
-        }} className='h-10 w-full rounded-[20px] font-bold bg-orange hover:bg-orangeHover text-white text-bL'>Create Task</button>
+        }} className='h-10 w-full rounded-[20px] font-bold bg-orange hover:bg-orangeHover text-white text-bL'>Sukūrti</button>
       </div>
     </>
   )

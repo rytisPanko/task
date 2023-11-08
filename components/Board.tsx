@@ -15,8 +15,8 @@ const Board = () => {
       {
         completeBoardSelected?.columns.length === 0 && (
           <div className='w-[80%] h-full flex items-center justify-center flex-col'>
-            <p className='text-mediumGrey text-hL mb-8'>This board is empty. Create a new column to get started.</p>
-            <button onClick={() => setDisplayAddEditBoard({ display: true, mode: 'EDIT' })} type='button' className='w-[174px] h-[48px] bg-orange hover:bg-orangeHover text-white rounded-full'>+ Add new Column</button>
+            <p className='text-mediumGrey text-hL mb-8'>Ši lenta tuščia,pradėkite kurti</p>
+            <button onClick={() => setDisplayAddEditBoard({ display: true, mode: 'EDIT' })} type='button' className='w-[174px] h-[48px] bg-orange hover:bg-orangeHover text-white rounded-full'>+ Pridėti naują stulpelį</button>
           </div>
         )
       }
@@ -27,7 +27,7 @@ const Board = () => {
               completeBoardSelected?.columns.map((col, index) => (
                 <div key={col.id} className='min-w-[280px] w-[280px] flex flex-col mr-6'>
                   <div className='h-[15px] flex items-center mb-6'>
-                    <span className={`w-[15px] h-[15px] ${index % 2 === 0 ? 'bg-[#49C4E5]' : 'bg-orange'} rounded-full mr-3`} />
+                  <span className={`w-[15px] h-[15px] ${index % 3 === 0 ? 'bg-[#FF0000]' : index % 3 === 1 ? 'bg-orange' : 'bg-blue-500' } rounded-full mr-3`} />
                     <p className='font-bold text-mediumGrey tracking-S text-bL'>{col.name} ({col.tasks?.length})</p>
                   </div>
                   <div className='w-full flex flex-col'>
@@ -49,7 +49,7 @@ const Board = () => {
               ))
             }
             <div onClick={() => setDisplayAddEditBoard({ display: true, mode: 'EDIT' })} className='min-w-[280px] flex items-center justify-center group bg-[#E9EFFA]/50 hover:bg-[#E9EFFA] dark:bg-darkGrey/50 dark:hover:bg-darkGrey cursor-pointer rounded-md'>
-              <p className='text-hXL text-mediumGrey group-hover:text-orange font-bold'>+ New Column</p>
+              <p className='text-hXL text-mediumGrey group-hover:text-orange font-bold'>+ Naujas stulpelis</p>
             </div>
           </div>
         )

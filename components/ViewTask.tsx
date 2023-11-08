@@ -40,7 +40,7 @@ const ViewTask = () => {
       body: JSON.stringify(task)
     })
     const newTask = await res.json();
-    console.log("Editing Task successful", { newTask });
+    console.log("redagavimas sėkmigas", { newTask });
 
     const newBoards = boards.map((board) => {
       if (board.id === boardSelectedId) {
@@ -79,7 +79,7 @@ const ViewTask = () => {
       body: JSON.stringify({ ...task, column: { id: newColumnTask.id, task } })
     })
     const newTask = await res.json();
-    console.log("Editing Column Task Successful", { newTask });
+    console.log("Stulpelio redagavimas sėkmingas", { newTask });
 
     const newBoards = boards.map((board) => {
       if (board.id === boardSelectedId) {
@@ -126,14 +126,14 @@ const ViewTask = () => {
                     setDisplayModalEditDeleteTask(false);
                     setViewTask({ display: false, task: null });
                   }
-                }} className='text-bL text-mediumGrey hover:underline cursor-pointer'>Edit Task</p>
+                }} className='text-bL text-mediumGrey hover:underline cursor-pointer'>Redaguoti</p>
                 <p onClick={() => {
                   if (viewTask.task?.id) {
                     setDisplayDeleteModal({ display: true, mode: 'task', id: viewTask.task.id });
                     setDisplayModalEditDeleteTask(false);
                     setViewTask({ display: false, task: null });
                   }
-                }} className='text-bL text-red hover:underline cursor-pointer'>Delete Task</p>
+                }} className='text-bL text-red hover:underline cursor-pointer'>Trinti</p>
               </div>
             )
           }
@@ -156,7 +156,7 @@ const ViewTask = () => {
           }
         </div>
         <div className='w-full h-[68px] flex flex-col justify-between mt-6 relative'>
-          <p className='font-bold text-bL text-mediumGrey dark:text-white'>Current Status</p>
+          <p className='font-bold text-bL text-mediumGrey dark:text-white'>Dabartinis statusas</p>
           <div onClick={() => setDisplayViewTaskChangeColumn(true)} className={`w-full h-10 flex items-center justify-between px-4 py-2 border border-mediumGrey/25 hover:border-orange ${displayViewTaskChangeColumn ? 'border-orange' : ''} rounded cursor-pointer`}>
             <p className='text-bL dark:text-white'>{viewTask.task?.status}</p>
             <svg className={`${displayViewTaskChangeColumn ? 'rotate-180' : ''}`} width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path stroke="#F97316" strokeWidth="2" fill="none" d="m1 1 4 4 4-4" /></svg>
