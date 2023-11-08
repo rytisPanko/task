@@ -2,7 +2,7 @@ import React from 'react'
 import { useBoardStateContext } from '../context/Board';
 import { useHomeStateContext } from '../context/Home';
 import { useTaskStateContext } from '../context/Task';
-import { IColumn } from '../interfaces';
+
 
 const Board = () => {
   const { boardSelectedId, boards, setBoards } = useHomeStateContext();
@@ -12,6 +12,7 @@ const Board = () => {
 
   return (
     <>
+   
       {
         completeBoardSelected?.columns.length === 0 && (
           <div className='w-[80%] h-full flex items-center justify-center flex-col'>
