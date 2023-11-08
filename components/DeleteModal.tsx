@@ -84,6 +84,7 @@ const DeleteModal = () => {
   }
   return (
     <>
+    
       <div onClick={() => setDisplayDeleteModal({ display: false, mode: '', id: '' })} className='w-screen h-screen absolute bg-black/50 z-20 top-0' />
       <div className='w-[480px] min-h-[229px] flex flex-col justify-between p-8 rounded-md bg-white dark:bg-darkBg absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-20'>
         <p className='text-hL text-red font-bold'>Trinti {displayDeleteModal.mode} ?</p>
