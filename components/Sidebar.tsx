@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 
 const Sidebar = () => {
-  const { boards, boardSelectedId, setBoardSelectedId, showSidebar, setShowSidebar, darkMode, setDarkMode } = useHomeStateContext();
+  const { boards, boardSelectedId, setBoardSelectedId } = useHomeStateContext();
   const { setDisplayAddEditBoard } = useBoardStateContext();
   return (
     <>

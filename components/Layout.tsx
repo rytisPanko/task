@@ -18,7 +18,7 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'Task' }: Props) => {
-  const { updateBoardModal, setUpdateBoardModal, darkMode, setDarkMode } = useHomeStateContext();
+  const { updateBoardModal, setUpdateBoardModal } = useHomeStateContext();
   const { displayAddEditBoard, displayDeleteModal } = useBoardStateContext();
   const { displayAddTask, displayAddTaskSelectColumn, setDisplayAddTaskSelectColumn, viewTask, displayViewTaskChangeColumn, setDisplayViewTaskChangeColumn, displayModalEditDeleteTask, setDisplayModalEditDeleteTask, displayEditTask, displayEditTaskSelectColumn, setDisplayEditTaskSelectColumn } = useTaskStateContext();
 

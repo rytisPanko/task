@@ -40,13 +40,11 @@ export type HomeContextType = {
   updateBoardModal: boolean;
   boards: IBoard[];
   boardSelectedId: string;
-  showSidebar: boolean;
-  darkMode: boolean;
+ 
   setUpdateBoardModal: React.Dispatch<React.SetStateAction<boolean>>;
   setBoards: React.Dispatch<React.SetStateAction<IBoard[]>>;
   setBoardSelectedId: React.Dispatch<React.SetStateAction<string>>;
-  setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>
-  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+
 };
 
 export type BoardContextType = {

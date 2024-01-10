@@ -10,7 +10,7 @@ import { getBoards } from './api/board';
 
 
 //Nurodo, kokios savybės bus perduodamos IndexPage komponentui. 
-// boards, kurios yra darbų lentų sąrašas.
+
 type Props = {
   boards: IBoard[]
 }
