@@ -22,14 +22,13 @@ module.exports = {
         redHover: '#FF9898',
       },
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'sans-serif']
+        sans: ['Roboto'] 
       },
       fontSize: {
-        hS: '12px',
-        bL: '13px',
-        hM: '15px',
-        hL: '18px',
-        hXL: '24px',
+        hS: '14px',
+        hM: '17px',
+        hL: '20px',
+        hXL: '26px',
       }
     }
   }
